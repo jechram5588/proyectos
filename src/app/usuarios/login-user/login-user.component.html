@@ -1,0 +1,23 @@
+<!-- <div class="card col-md-4 offset-4">
+    <div class="card-header">
+        Login
+    </div> -->
+    <div class="card-body">
+    <form class="custom-form tex-aling-center" method="post" >
+        <div class="mb-4">
+            <label for="" class="form-label">Usuario</label>
+            <input type="text" [(ngModel)]="usuario" name="usuario" placeholder="Usuario" required="required"
+                class="form-control">
+        </div>
+
+        <div class="mb-4">
+            <label for="" class="form-label">Contraseña</label>
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required="required"
+                class="form-control">
+        </div>
+
+
+        <button type="submit" (click)="login()" class="btn btn-success">Entrar</button>
+
+    </form>
+<!-- </div> -->

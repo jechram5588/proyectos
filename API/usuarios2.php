@@ -1,14 +1,29 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
-header("Access-Control-Allow-Methods: GET,POST");
+header("Access-Control-Allow-Methods: GET, POST");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // Conecta a la base de datos  con usuario, contraseña y login de la BD
 $servidor = "localhost"; $usuario = "root"; $contrasenia = ""; $loginBaseDatos = "proyectos";
+//$servidor = "162.241.62.48"; $usuario = "argossco_proyectos_sa"; $contrasenia = 'Pr0y3ct0$_s4'; $loginBaseDatos = "argossco_proyectos";
 $conexionBD = new mysqli($servidor, $usuario, $contrasenia, $loginBaseDatos);
 
+
+//consulta el login del user
+if (isset($_GET["login"])){
+    $data = json_decode(file_get_contents("php://input"));
+    $usuario=$data->usuario;
+    $password=$data->password;
+    $sqlUsuarios = mysqli_query($conexionBD,"SELECT * FROM usuarios WHERE login='$usuario'and password='$password'");
+    if(mysqli_num_rows($sqlUsuarios) > 0){
+        $empleaados = mysqli_fetch_all($sqlUsuarios,MYSQLI_ASSOC);
+        echo json_encode($empleaados);
+        exit();
+    }
+    else{  echo json_encode(["Error"=>0]); }
+}
 // Consulta datos y recepciona una clave para consultar dichos datos con dicha clave
 if (isset($_GET["consultar"])){
     $sqlUsuarios = mysqli_query($conexionBD,"SELECT * FROM usuarios WHERE id=".$_GET["consultar"]);
@@ -63,6 +78,5 @@ if(mysqli_num_rows($sqlUsuarios) > 0){
     echo json_encode($empleaados);
 }
 else{ echo json_encode([["success"=>0]]); }
-
 
 ?>

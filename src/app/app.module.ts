@@ -7,8 +7,10 @@ import { AppComponent } from './app.component';
 import { AddUserComponent } from './usuarios/add-user/add-user.component';
 import { EditUserComponent } from './usuarios/edit-user/edit-user.component';
 import { ListUserComponent } from './usuarios/list-user/list-user.component';
-import { DashboardMainComponent } from './dashboards/dashboard-main/dashboard-main.component';
+import { LoginUserComponent } from './usuarios/login-user/login-user.component';
 
+
+import { DashboardMainComponent } from './dashboards/dashboard-main/dashboard-main.component';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     EditUserComponent,
     ListUserComponent,
     DashboardMainComponent,
+    LoginUserComponent,
   ],
   imports: [
     BrowserModule,
